@@ -1,0 +1,88 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container-fluid">
+        <!-- row -->
+        <div class="row">
+
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h3 class="title text-center">New Books</h3>
+                    <div class="section-nav">
+                        <ul class="section-tab-nav tab-nav">
+                            <li class="active"><a data-toggle="tab" href="#tab1">Classics</a></li>
+                            <li><a data-toggle="tab" href="#tab1">Fictions</a></li>
+                            <li><a data-toggle="tab" href="#tab1">NonFictions</a></li>
+                            <li><a data-toggle="tab" href="#tab1">Stragy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /section title -->
+            <!-- Products tab & slick -->
+            <div class="col-md-12">
+                <div class="row">
+
+                    @foreach (var item in Model)
+                    {
+                    <div class="col-lg-3" style="margin-bottom:3rem">
+                        <div class="products-tabs">
+                            <!-- tab -->
+                            <div id="tab1" class="tab-pane active">
+                                <div class="products-slick" data-nav="#slick-nav-1">
+                                    <!-- product -->
+                                    <div class="product">
+                                        <div class="product-img">
+                                            <img style="width:100%;height:30vh" src="@Html.DisplayFor(modelItem => item.Image)" alt="">
+                                            <div class="product-label">
+                                                <span class="sale">-10%</span>
+                                                <span class="new">NEW</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-body">
+                                            <p class="product-category">@Html.DisplayFor(modelItem => item.Type)</p>
+                                            <h3 class="product-name"><a href="#">@Html.DisplayFor(modelItem => item.Title)</a></h3>
+                                            <h4 class="product-price">$ @Html.DisplayFor(modelItem => item.Price) </h4>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </div>
+                                            <div class="product-btns">
+                                                <button class="add-to-wishlist"><i class="fa fa-heart"></i><span class="tooltipp">add to wishlist</span></button>
+                                                <button class="add-to-compare"><i class="fa fa-star"></i><span class="tooltipp">add to favorite</span></button>
+                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="add-to-cart">
+                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="slick-nav-1" class="products-slick-nav"></div>
+                            </div>
+                            <!-- /tab -->
+                        </div>
+                    </div>
+                    }
+
+
+                </div>
+            </div>
+            <!-- Products tab & slick -->
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
